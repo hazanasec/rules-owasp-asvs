@@ -3,6 +3,7 @@ rules:
   message: |
     V6 Stored Cryptography Verification Requirements
     6.2.5 Insecure Algorithm
+    https://github.com/OWASP/ASVS/blob/master/4.0/en/0x14-V6-Cryptography.md#v62-algorithms
     Detected SHA1 hash algorithm which is considered insecure. SHA1 is not 
     collision resistant and is therefore not suitable as a cryptographic
     signature. Use SHA256 instead.
@@ -17,6 +18,7 @@ rules:
   message: |
     V6 Stored Cryptography Verification Requirements
     6.2.5 Insecure Algorithm
+    https://github.com/OWASP/ASVS/blob/master/4.0/en/0x14-V6-Cryptography.md#v62-algorithms
     Detected MD5 hash algorithm which is considered insecure. MD5 is not 
     collision resistant and is therefore not suitable as a cryptographic
     signature. Use SHA256 instead.
@@ -31,6 +33,7 @@ rules:
   message: |
     V6 Stored Cryptography Verification Requirements
     6.2.5 Insecure Algorithm
+    https://github.com/OWASP/ASVS/blob/master/4.0/en/0x14-V6-Cryptography.md#v62-algorithms
     DES is considered deprecated. AES is the recommended cipher.
     Upgrade to use AES.
   pattern: |
@@ -41,6 +44,7 @@ rules:
   message: |
     V6 Stored Cryptography Verification Requirements
     6.2.5 Insecure Algorithm
+    https://github.com/OWASP/ASVS/blob/master/4.0/en/0x14-V6-Cryptography.md#v62-algorithms
     NullCipher was detected. This will not encrypt anything;
     the cipher text will be the same as the plain text. Use
     a valid, secure cipher: Cipher.getInstance("AES/CBC/PKCS7PADDING").
@@ -52,6 +56,7 @@ rules:
   message: |
     V6 Stored Cryptography Verification Requirements
     6.2.5 Insecure Algorithm
+    https://github.com/OWASP/ASVS/blob/master/4.0/en/0x14-V6-Cryptography.md#v62-algorithms
     Triple DES (3DES or DESede) is considered deprecated. AES is the recommended cipher.
   pattern: |
     $CIPHER.getInstance("=~/DESede.*/");
@@ -61,6 +66,7 @@ rules:
   message: |
     V6 Stored Cryptography Verification Requirements
     6.2.5 Insecure Algorithm
+    https://github.com/OWASP/ASVS/blob/master/4.0/en/0x14-V6-Cryptography.md#v62-algorithms
     Using RSA without OAEP mode weakens the encryption.
   pattern: |
     $CIPHER.getInstance("RSA/NONE/NoPadding")
