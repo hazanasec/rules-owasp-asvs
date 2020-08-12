@@ -1,0 +1,17 @@
+rules:
+- id: asvs-java-v6-crypto-insecure-algorithm
+  severity: WARNING
+  languages:
+  - java
+  metadata:
+    asvs:
+      section: "V6 Stored Cryptography Verification Requirements"
+      control_id: "6.2.5 Insecure Algorithm"
+      control_url: "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x14-V6-Cryptography.md#v62-algorithms"
+      version: "4"
+    references:
+    - https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#legacy-algorithms
+  message: |
+    Triple DES (3DES or DESede) is considered deprecated. AES is the recommended cipher.
+  pattern: |
+    $CIPHER.getInstance("=~/DESede.*/");
