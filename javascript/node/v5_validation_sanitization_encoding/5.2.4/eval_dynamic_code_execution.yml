@@ -10,7 +10,7 @@ rules:
       control_url: "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x13-V5-Validation-Sanitization-Encoding.md#v52-sanitization-and-sandboxing-requirements"
       version: "4"
     references: |
-    - https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html
+        https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html
   message: |
     User controlled data in eval() or similar functions may result in Server
     Side Injection or Remote Code Injection

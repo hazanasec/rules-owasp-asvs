@@ -1,0 +1,19 @@
+rules:
+- id: asvs-java-v6-crypto-insecure-algorithm
+  severity: WARNING
+  languages:
+  - java
+  metadata:
+    asvs:
+      section: "V6 Stored Cryptography Verification Requirements"
+      control_id: "6.2.5 Insecure Algorithm"
+      control_url: "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x14-V6-Cryptography.md#v62-algorithms"
+      version: "4"
+    references: |
+    - https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#legacy-algorithms
+  message: |
+    SHA1 is a a weak hash which is known to have collision. Use a strong
+    hashing function.
+  patterns:
+  - pattern: |
+      $X.createHash("sha1")

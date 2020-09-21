@@ -1,0 +1,21 @@
+rules:
+- id: asvs-java-v6-crypto-insecure-algorithm
+  severity: WARNING
+  languages:
+  - javascript
+  metadata:
+    asvs:
+      section: "V6 Stored Cryptography Verification Requirements"
+      control_id: "6.3.1 Insecure Algorithm"
+      control_url: "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x14-V6-Cryptography.md#v63-random-values"
+      version: "4"
+    references: |
+    - https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html#secure-random-number-generation
+  message: |
+    crypto.pseudoRandomBytes()/Math.random() is a cryptographically weak random number generator.
+  patterns:
+  - pattern-either:
+    - pattern: |
+        $X.pseudoRandomBytes(...)
+    - pattern: |
+        Math.random(...)

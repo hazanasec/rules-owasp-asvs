@@ -1,0 +1,43 @@
+rules:
+- id: asvs-java-v5-dynamic-code-execution
+  severity: WARNING
+  languages:
+  - javascript
+  metadata:
+    asvs:
+      section: "V5 Validation, Sanitization and Encoding Verification Requirements"
+      control_id: "5.2.4 Dynamic Code Execution"
+      control_url: "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x13-V5-Validation-Sanitization-Encoding.md#v52-sanitization-and-sandboxing-requirements"
+      version: "4"
+      references: |
+        https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_Security_Cheat_Sheet.html
+  message: |
+    User controlled data in 'unserialize()' or 'deserialize()' function can
+    result in Object Injection or Remote Code Injection.
+  patterns:
+  - pattern-inside: |
+      require('serialize-to-js');
+      ...
+  - pattern: |
+      $X.deserialize(...)
+- id: asvs-java-v5-dynamic-code-execution
+  severity: WARNING
+  languages:
+  - javascript
+  metadata:
+    asvs:
+      section: "V5 Validation, Sanitization and Encoding Verification Requirements"
+      control_id: "5.2.4 Dynamic Code Execution"
+      control_url: "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x13-V5-Validation-Sanitization-Encoding.md#v52-sanitization-and-sandboxing-requirements"
+      version: "4"
+    references: |
+      https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_Security_Cheat_Sheet.html
+  message: |
+    User controlled data in 'unserialize()' or 'deserialize()' function can
+    result in Object Injection or Remote Code Injection.      
+  patterns:
+  - pattern-inside: |
+      require('node-serialize');
+      ...
+  - pattern: |
+      $X.unserialize(...)
