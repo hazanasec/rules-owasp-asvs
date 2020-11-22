@@ -37,4 +37,4 @@ java/
     v6_cryptography/
 ```
 ### Structure of the rule name
-```language/vN_description/6.2.5_short_description.yml```
+```language/vN_description/6.2.5/short_description_{a|b}.yml```
