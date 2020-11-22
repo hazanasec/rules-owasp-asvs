@@ -2,7 +2,7 @@ rules:
 - id: asvs-java-v6-crypto-insecure-algorithm
   severity: WARNING
   languages:
-  - java
+  - javascript
   metadata:
     asvs:
       section: "V6 Stored Cryptography Verification Requirements"

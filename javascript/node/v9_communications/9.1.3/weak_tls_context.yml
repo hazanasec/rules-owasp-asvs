@@ -1,0 +1,74 @@
+rules:
+- id: asvs-java-v9-weak-tls
+  severity: WARNING
+  languages:
+  - javascript
+  metadata:
+    asvs:
+      section: "V9 Communications Verification Requirements"
+      control_id: "9.1.3 Weak TLS Context"
+      control_url: "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x17-V9-Communications.md#v91-client-communications-security-requirements"
+      version: "4"
+    references: |
+    - https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html
+  message: |
+    An insecure TLS context was detected. TLS versions 1.0, 1.1, and all SSL versions
+    are considered weak encryption and are deprecated.
+ patterns:
+  - pattern-either:
+    - pattern: |
+        $CONST = require('crypto');
+        ...
+        https.createServer(...).$FUNC(...);
+    - pattern: |
+        $CONST = require('constants');
+        ...
+        https.createServer(...).$FUNC(...);
+  - pattern-not: |
+      $CONST = require('crypto');
+      ...
+      https.createServer({secureOptions: $CONST.SSL_OP_NO_TLSv1 | $CONST.SSL_OP_NO_SSLv3 | $CONST.SSL_OP_NO_SSLv2 }, ...).$FUNC(...);
+  - pattern-not: |
+      $CONST = require('crypto');
+      ...
+      https.createServer({secureOptions: $CONST.SSL_OP_NO_TLSv1 | $CONST.SSL_OP_NO_SSLv2 |$CONST.SSL_OP_NO_SSLv3 }, ...).$FUNC(...);
+  - pattern-not: |
+      $CONST = require('crypto');
+      ...
+      https.createServer({secureOptions: $CONST.SSL_OP_NO_SSLv2 |$CONST.SSL_OP_NO_SSLv3 |$CONST.SSL_OP_NO_TLSv1 }, ...).$FUNC(...);
+  - pattern-not: |
+      $CONST = require('crypto');
+      ...
+      https.createServer({secureOptions: $CONST.SSL_OP_NO_SSLv2 |$CONST.SSL_OP_NO_TLSv1 | $CONST.SSL_OP_NO_SSLv3}, ...).$FUNC(...);
+  - pattern-not: |
+      $CONST = require('crypto');
+      ...
+      https.createServer({secureOptions:$CONST.SSL_OP_NO_SSLv3 | $CONST.SSL_OP_NO_SSLv2 |$CONST.SSL_OP_NO_TLSv1}, ...).$FUNC(...);
+  - pattern-not: |
+      $CONST = require('crypto');
+      ...
+      https.createServer({secureOptions:$CONST.SSL_OP_NO_SSLv3 | $CONST.SSL_OP_NO_TLSv1| $CONST.SSL_OP_NO_SSLv2}, ...).$FUNC(...);
+  - pattern-not: |
+      $CONST = require('constants');
+      ...
+      https.createServer({secureOptions: $CONST.SSL_OP_NO_TLSv1 | $CONST.SSL_OP_NO_SSLv3 | $CONST.SSL_OP_NO_SSLv2 }, ...).$FUNC(...);
+  - pattern-not: |
+      $CONST = require('constants');
+      ...
+      https.createServer({secureOptions: $CONST.SSL_OP_NO_TLSv1 | $CONST.SSL_OP_NO_SSLv2 |$CONST.SSL_OP_NO_SSLv3 }, ...).$FUNC(...);
+  - pattern-not: |
+      $CONST = require('constants');
+      ...
+      https.createServer({secureOptions: $CONST.SSL_OP_NO_SSLv2 |$CONST.SSL_OP_NO_SSLv3 |$CONST.SSL_OP_NO_TLSv1 }, ...).$FUNC(...);
+  - pattern-not: |
+      $CONST = require('constants');
+      ...
+      https.createServer({secureOptions: $CONST.SSL_OP_NO_SSLv2 |$CONST.SSL_OP_NO_TLSv1 | $CONST.SSL_OP_NO_SSLv3}, ...).$FUNC(...);
+  - pattern-not: |
+      $CONST = require('constants');
+      ...
+      https.createServer({secureOptions:$CONST.SSL_OP_NO_SSLv3 | $CONST.SSL_OP_NO_SSLv2 |$CONST.SSL_OP_NO_TLSv1}, ...).$FUNC(...);
+  - pattern-not: |
+      $CONST = require('constants');
+      ...
+      https.createServer({secureOptions:$CONST.SSL_OP_NO_SSLv3 | $CONST.SSL_OP_NO_TLSv1| $CONST.SSL_OP_NO_SSLv2}, ...).$FUNC(...);
