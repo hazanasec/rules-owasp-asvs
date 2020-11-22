@@ -1,0 +1,21 @@
+rules:
+- id: asvs-nginx-v9-missing-tls
+  severity: WARNING
+  languages:
+  - generic
+  metadata:
+    asvs:
+      section: "V9 Communications Verification Requirements"
+      control_id: "9.1.3 Missing TLS Version"
+      control_url: "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x17-V9-Communications.md#v91-client-communications-security-requirements"
+      version: "4"
+    references: |
+    - https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html
+  message: |
+    This server configuration is missing the 'ssl_protocols' directive. By default,
+    this server will use 'ssl_protocols TLSv1 TLSv1.1 TLSv1.2', and versions older
+    than TLSv1.2 are known to be broken. Explicitly specify 'ssl_protocols TLSv1.2 TLSv1.3'
+    to use secure TLS versions.
+  patterns:
+  - pattern: server { ... listen $PORT ssl; ... }
+  - pattern-not-inside: server { ... ssl_protocols ... }
