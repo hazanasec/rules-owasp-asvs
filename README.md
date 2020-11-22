@@ -36,3 +36,5 @@ java/
     v5_validation_sanitization_encoding/
     v6_cryptography/
 ```
+### Structure of the rule name
+```language/vN_description/6.2.5_short_description.yml```
